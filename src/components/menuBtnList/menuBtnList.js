@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { globalContext } from '../../context/globalContext'
 import { lastMonth, lastWeekend, yesterday } from "../../utils/date";
+import DatePickerItem from '../datePickerItem/datePickerItem';
 import MenuBtn from '../menuBtn/MenuBtn';
 
 function MenuBtnList(props) {
@@ -42,6 +43,9 @@ function MenuBtnList(props) {
             className="d-inline-block p-3"
           />)
       })}
+
+      <DatePickerItem fromDate />
+      <DatePickerItem />
     </div>
   )
 }
