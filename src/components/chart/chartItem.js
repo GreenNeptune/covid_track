@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { globalContext } from '../../context/globalContext';
 import ChartItemType from './chartItemType';
 import countriesJSON from '../../json/countries.json';
-
-
-const data = {
-  labels: ['1', '2', '3', '4', '5', '6'],
-  datasets: [
-    {
-      label: countriesJSON[0].name,
-      data: [12, 19, 3, 5, 2, 3],
-      fill: false,
-      backgroundColor: countriesJSON[0].color,
-      borderColor: countriesJSON[0].color,
-    },
-  ],
-};
-
+import { format } from 'date-fns';
 
 function ChartItem(props) {
+
+  const { countries, date } = useContext(globalContext);
+
+  let data = {
+    labels: [format(date.from, "yyyy-MM-dd"), format(date.to, "yyyy-MM-dd")],
+    datasets: countries.map((country, i) => {
+
+      return {
+        label: countriesJSON[i].name,
+        data: country.map(item => item[props.filter]),
+        fill: false,
+        backgroundColor: countriesJSON[i].color,
+        borderColor: countriesJSON[i].color,
+
+      }
+    })
+  }
+
   return (
     <div className='chart_header'>
       <h2 className='title'>{props.title}</h2>
-      <ChartItemType type="bar" data={data} />
+      <ChartItemType type={props.type} data={data} />
     </div>
   )
 }
