@@ -4,6 +4,7 @@ import { lastMonth, lastWeekend, yesterday } from "../../utils/date";
 import DatePickerItem from '../datePickerItem/datePickerItem';
 import MenuBtn from '../menuBtn/MenuBtn';
 
+
 function MenuBtnList(props) {
 
   const { updateDate } = useContext(globalContext);
@@ -41,21 +42,25 @@ function MenuBtnList(props) {
               e.preventDefault()
               handleOnClick(item.date)
             }}
-            className="d-inline-block p-3"
+            className="p-3"
           />)
       })}
+      <div className="d-flex">
 
-      <MenuBtn
-        title="מותאם"
-        onClick={() => setShowDatePicker(!showDatePicker)}
-        className="d-inline-block p-3"
-      />
-      {showDatePicker &&
-        <div>
-          <DatePickerItem fromDate />
-          <DatePickerItem />
-        </div>
-      }
+        <MenuBtn
+          title="מותאם"
+          onClick={() => setShowDatePicker(!showDatePicker)}
+          className="p-3"
+        />
+
+        {showDatePicker &&
+          <div className="d-inline-block">
+            <DatePickerItem fromDate />
+            <DatePickerItem />
+          </div>
+        }
+
+      </div>
     </div>
   )
 }
