@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { globalContext } from '../../context/globalContext'
 import { lastMonth, lastWeekend, yesterday } from "../../utils/date";
 import MenuBtn from '../menuBtn/MenuBtn';
 
 function MenuBtnList(props) {
 
-  const handleOnClick = () => {
-    console.log("click")
+  const { updateDate } = useContext(globalContext);
+
+  const handleOnClick = (date) => {
+    updateDate({ from: date, to: new Date() })
   }
 
   let btnMenuListState = [
@@ -34,7 +37,7 @@ function MenuBtnList(props) {
             date={item.date}
             onClick={(e) => {
               e.preventDefault()
-              handleOnClick()
+              handleOnClick(item.date)
             }}
             className="d-inline-block p-3"
           />)
@@ -44,5 +47,3 @@ function MenuBtnList(props) {
 }
 
 export default MenuBtnList
-
-

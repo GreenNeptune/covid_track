@@ -17,11 +17,19 @@ export const globalContext = createContext(initialState);
 export function GlobalContextProvider({ children }) {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  // actions
+  function updateDate(date) {
+    dispatch({
+      type: 'UPDATE_DATE',
+      payload: date
+    });
+  }
 
   return (
     <globalContext.Provider value={{
       date: state.date,
       countries: state.countries,
+      updateDate
     }}
     >
       {children}
