@@ -1,12 +1,12 @@
 import { createContext, useReducer } from "react";
 import AppReducer from './appReducer';
 
-import { yesterday } from "../utils/date";
+import { today, yesterday } from "../utils/date";
 
 const initialState = {
   date: {
     from: yesterday(),
-    to: yesterday()
+    to: today()
   },
   countries: []
 }
@@ -25,11 +25,19 @@ export function GlobalContextProvider({ children }) {
     });
   }
 
+  function updateCountries(countries) {
+    dispatch({
+      type: 'UPDATE_COUNTRIES',
+      payload: countries
+    });
+  }
+
   return (
     <globalContext.Provider value={{
       date: state.date,
       countries: state.countries,
-      updateDate
+      updateDate,
+      updateCountries
     }}
     >
       {children}

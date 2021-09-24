@@ -8,6 +8,11 @@ const appReducer = (state, action) => {
           ...action.payload
         }
       }
+    case 'UPDATE_COUNTRIES':
+      return {
+        ...state,
+        countries: action.payload
+      }
     default:
       return state;
   }
