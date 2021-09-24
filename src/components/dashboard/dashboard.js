@@ -1,9 +1,10 @@
+import ChartItem from "../chart/chartItem"
 
 function Dashboard(props) {
 
   return (
     <main className="container">
-      dashboard
+      <ChartItem />
     </main>
   )
 }
