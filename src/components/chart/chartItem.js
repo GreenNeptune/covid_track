@@ -20,7 +20,7 @@ const data = {
 function ChartItem(props) {
   return (
     <div className='chart_header'>
-      <h2 className='title'>Line Chart</h2>
+      <h2 className='title'>{props.title}</h2>
       <ChartItemType type="bar" data={data} />
     </div>
   )

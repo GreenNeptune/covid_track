@@ -1,10 +1,10 @@
-import ChartItem from "../chart/chartItem"
+import ChartList from "../chart/chartList"
 
 function Dashboard(props) {
 
   return (
     <main className="container">
-      <ChartItem />
+      <ChartList />
     </main>
   )
 }
