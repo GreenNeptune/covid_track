@@ -1,0 +1,22 @@
+[
+  {
+    "name": "italy",
+    "color": "blue"
+  },
+  {
+    "name": "Japan",
+    "color": "green"
+  },
+  {
+    "name": "south-africa",
+    "color": "red"
+  },
+  {
+    "name": "United Kingdom",
+    "color": "brown"
+  },
+  {
+    "name": "india",
+    "color": "orange"
+  }
+]
