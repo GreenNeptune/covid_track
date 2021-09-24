@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { globalContext } from '../../context/globalContext'
 import { lastMonth, lastWeekend, yesterday } from "../../utils/date";
 import DatePickerItem from '../datePickerItem/datePickerItem';
@@ -7,6 +7,7 @@ import MenuBtn from '../menuBtn/MenuBtn';
 function MenuBtnList(props) {
 
   const { updateDate } = useContext(globalContext);
+  const [showDatePicker, setShowDatePicker] = useState(false)
 
   const handleOnClick = (date) => {
     updateDate({ from: date, to: new Date() })
@@ -44,8 +45,17 @@ function MenuBtnList(props) {
           />)
       })}
 
-      <DatePickerItem fromDate />
-      <DatePickerItem />
+      <MenuBtn
+        title="מותאם"
+        onClick={() => setShowDatePicker(!showDatePicker)}
+        className="d-inline-block p-3"
+      />
+      {showDatePicker &&
+        <div>
+          <DatePickerItem fromDate />
+          <DatePickerItem />
+        </div>
+      }
     </div>
   )
 }
