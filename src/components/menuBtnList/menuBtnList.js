@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import { globalContext } from '../../context/globalContext'
 import { lastMonth, lastWeekend, yesterday } from "../../utils/date";
 import DatePickerItem from '../datePickerItem/datePickerItem';
-import MenuBtn from '../menuBtn/MenuBtn';
 
 
 function MenuBtnList(props) {
@@ -34,24 +33,23 @@ function MenuBtnList(props) {
     <div className="d-flex flex-wrap justify-content-start">
       {btnMenuListState.map((item, ind) => {
         return (
-          <MenuBtn
-            key={ind}
-            title={item.title}
-            date={item.date}
+          <button
+            className="p-3"
             onClick={(e) => {
               e.preventDefault()
               handleOnClick(item.date)
-            }}
-            className="p-3"
-          />)
+            }}>
+            {item.title}
+          </button>
+        )
       })}
       <div className="d-flex">
-
-        <MenuBtn
-          title="מותאם"
-          onClick={() => setShowDatePicker(!showDatePicker)}
+        <button
           className="p-3"
-        />
+          onClick={() => setShowDatePicker(!showDatePicker)}
+        >
+          מותאם
+        </button>
 
         {showDatePicker &&
           <div className="d-inline-block">
@@ -59,7 +57,6 @@ function MenuBtnList(props) {
             <DatePickerItem />
           </div>
         }
-
       </div>
     </div>
   )
