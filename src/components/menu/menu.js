@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuBtnList from '../menuBtnList/menuBtnList'
+import MenuBtnList from './menuBtnList'
 import './menu.css'
 
 function Menu(props) {
