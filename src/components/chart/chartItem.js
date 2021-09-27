@@ -3,13 +3,14 @@ import { globalContext } from '../../context/globalContext';
 import ChartItemType from './chartItemType';
 import countriesJSON from '../../json/countries.json';
 import { format } from 'date-fns';
+import { getDatesBetweenDates } from '../../utils/date';
 
 function ChartItem(props) {
 
   const { countries, date } = useContext(globalContext);
 
   let data = {
-    labels: [format(date.from, "yyyy-MM-dd"), format(date.to, "yyyy-MM-dd")],
+    labels: [...getDatesBetweenDates(date.from, date.to).map(date => format(date, "yyyy-MM-dd"))],
     datasets: countries.map((country, i) => {
 
       return {
